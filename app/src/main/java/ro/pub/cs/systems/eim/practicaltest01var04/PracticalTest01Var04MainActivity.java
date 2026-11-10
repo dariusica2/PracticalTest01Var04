@@ -57,10 +57,10 @@ public class PracticalTest01Var04MainActivity extends AppCompatActivity {
                     studentInformationTextView.setText("");
                 }
             } else if (id == R.id.navigate_to_secondary_activity_button) {
-//                Intent intent = new Intent(getApplicationContext(), PracticalTest01PracticeSecondaryActivity.class);
-//                int numberOfClicks = leftNumberOfClicks + rightNumberOfClicks;
-//                intent.putExtra("NUMBER_OF_CLICKS", numberOfClicks);
-//                startActivityForResult(intent, 69);
+                Intent intent = new Intent(getApplicationContext(), PracticalTest01Var04SecondaryActivity.class);
+                intent.putExtra("STUDENT_NAME", studentEditText.getText().toString());
+                intent.putExtra("GROUP_NAME", groupEditText.getText().toString());
+                startActivityForResult(intent, 69);
             } else {
                 throw new IllegalStateException("Unexpected value: " + view.getId());
             }
@@ -89,6 +89,14 @@ public class PracticalTest01Var04MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == 69) {
+            Toast.makeText(this, "The activity returned with result " + resultCode, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -101,6 +109,7 @@ public class PracticalTest01Var04MainActivity extends AppCompatActivity {
         });
 
         navigateToSecondaryActivityButton = (Button)findViewById(R.id.navigate_to_secondary_activity_button);
+        navigateToSecondaryActivityButton.setOnClickListener(buttonClickListener);
 
         selectStudentCheckbox = (CheckBox)findViewById(R.id.select_student_checkbox);
         selectGroupCheckbox = (CheckBox)findViewById(R.id.select_group_checkbox);
