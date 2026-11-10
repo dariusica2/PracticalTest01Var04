@@ -17,6 +17,7 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,10 +27,19 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.PracticalTest01Var04SecondaryActivity" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+
+        <service
+            android:name=".service.PracticalTest01Var04Service"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".PracticalTest01Var04Service"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
